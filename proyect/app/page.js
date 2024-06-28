@@ -17,14 +17,14 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       });
-
+  
       if (!responseA.ok) {
         throw new Error(`HTTP error! Status: ${responseA.status}`);
       }
-
+  
       const dataA = await responseA.json();
       console.log("Usuarios de empresa A:", dataA);
-
+  
       // Obtener usuarios de empresa_b
       const responseB = await fetch(`http://localhost:3001/empresa_b/users`, {
         method: "GET",
@@ -32,25 +32,27 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       });
-
+  
       if (!responseB.ok) {
         throw new Error(`HTTP error! Status: ${responseB.status}`);
       }
-
+  
       const dataB = await responseB.json();
       console.log("Usuarios de empresa B:", dataB);
-
+  
       // Puedes hacer llamadas similares para obtener kpis y tasks de cada empresa
       // Ejemplo:
       // const responseKpiA = await fetch(`http://localhost:3001/empresa_a/kpis`);
       // const responseKpiB = await fetch(`http://localhost:3001/empresa_b/kpis`);
       // const responseTaskA = await fetch(`http://localhost:3001/empresa_a/tasks`);
       // const responseTaskB = await fetch(`http://localhost:3001/empresa_b/tasks`);
-
+  
     } catch (error) {
       console.error("Fetch error:", error);
     }
   };
+  
+  
 
 
   return (
