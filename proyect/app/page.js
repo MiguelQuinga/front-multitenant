@@ -11,7 +11,7 @@ export default function Home() {
   const pruebaMultenant = async () => {
     try {
       // Obtener usuarios de empresa_a
-      const responseA = await fetch(`http://localhost:3001/empresa_a/users`, {
+      const responseA = await fetch(`http://localhost:3001/table-structure?schema=empresa_a&table=kpi`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -23,10 +23,10 @@ export default function Home() {
       }
   
       const dataA = await responseA.json();
-      console.log("Usuarios de empresa A:", dataA);
+      console.log("elementos empresa A:", dataA);
   
       // Obtener usuarios de empresa_b
-      const responseB = await fetch(`http://localhost:3001/empresa_b/users`, {
+      const responseB = await fetch(`http://localhost:3001/table-structure?schema=empresa_b&table=kpi`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export default function Home() {
       }
   
       const dataB = await responseB.json();
-      console.log("Usuarios de empresa B:", dataB);
+      console.log("elementos empresa B:", dataB);
   
       // Puedes hacer llamadas similares para obtener kpis y tasks de cada empresa
       // Ejemplo:
