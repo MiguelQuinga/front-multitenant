@@ -35,7 +35,7 @@ export default function TenantEmployees({ params }) { //registrar un empleado da
     };
 
     return(<>
-        <div className="bg-blue-600 flex items-center justify-center min-h-screen flex-col">
+        <div className="animated-gradient flex items-center justify-center min-h-screen flex-col">
             <div className='container'>
                 <p>Welcome to: {paramCompnay}</p>
                 <form>

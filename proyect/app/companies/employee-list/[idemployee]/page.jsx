@@ -30,7 +30,7 @@ export default function AssignTasks({ params }) { //registrar un empleado dado u
     };
 
     return (<>
-        <div className="bg-blue-600 flex items-center min-h-screen flex-col">
+        <div className="animated-gradient flex items-center min-h-screen flex-col">
             <div className='mt-10'>
                 <h2 className='text-center text-[32px] text-rose-900'>Assign tasks</h2>
                 <p className='text-[24px] text-rose-950'>User: {idEmproee}</p>

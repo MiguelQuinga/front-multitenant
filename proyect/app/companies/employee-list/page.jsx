@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
+import './style.css'
 
 export default function EmployeeList() { //registrar un empleado dado un tenant
     const [tenantName, setTenantName] = useState('');
@@ -47,10 +48,10 @@ export default function EmployeeList() { //registrar un empleado dado un tenant
     const handleButtonClick = (id) => {
         router.push(`/companies/employee-list/${id}`);
     };
-
+//<div className="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center min-h-screen p-4 flex-col">
     return (<>
-        <div className="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center min-h-screen p-4 flex-col">
-            <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+        <div className="animated-gradient flex items-center justify-center min-h-screen p-4 flex-col">
+            <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70">
                 <div className="mb-4">
                     <label htmlFor="tenantName" className="block text-sm font-medium text-gray-700 mb-2">
                         Tenant Name:
@@ -77,7 +78,7 @@ export default function EmployeeList() { //registrar un empleado dado un tenant
                 </button>
             </div> <br />
             <Link href={`/companies/${tenantName}`}
-                className="w-full py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[200px] text-center"
+                className=" py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 w-[200px] text-center"
             >
                 Crear Empleado
             </Link><br />
@@ -97,7 +98,7 @@ export default function EmployeeList() { //registrar un empleado dado un tenant
                                 )}
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='text-black'>
                             {employees.map((employee, index) => (
                                 <tr
                                     key={employee._id}
