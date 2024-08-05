@@ -16,8 +16,8 @@ function Companies() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    companyName: "preubaMiguel",
-                    tenantId: "preubamiguel"
+                    companyName: companyRegister,
+                    tenantId: idCompanyRegister
                 }),
             });
 
