@@ -6,7 +6,10 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [idenviar, setIdenviar] = useState('');
   const [resspuesta, setResspuesta] = useState('valor inicial');
-
+  
+  useEffect(() => {
+    pruebaMultenant().then(result => result).catch(error => console.log(error));
+  }, []);
 
   const pruebaMultenant = async () => {
     try {
@@ -17,43 +20,18 @@ export default function Home() {
           "Content-Type": "application/json",
         },
       });
-  
+
       if (!responseA.ok) {
         throw new Error(`HTTP error! Status: ${responseA.status}`);
       }
-  
+
       const dataA = await responseA.json();
       console.log("elementos empresa A:", dataA);
-  
-      // Obtener usuarios de empresa_b
-      const responseB = await fetch(`http://localhost:3001/table-structure?schema=empresa_b&table=kpi`, {
-        method: "GET",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
-  
-      if (!responseB.ok) {
-        throw new Error(`HTTP error! Status: ${responseB.status}`);
-      }
-  
-      const dataB = await responseB.json();
-      console.log("elementos empresa B:", dataB);
-  
-      // Puedes hacer llamadas similares para obtener kpis y tasks de cada empresa
-      // Ejemplo:
-      // const responseKpiA = await fetch(`http://localhost:3001/empresa_a/kpis`);
-      // const responseKpiB = await fetch(`http://localhost:3001/empresa_b/kpis`);
-      // const responseTaskA = await fetch(`http://localhost:3001/empresa_a/tasks`);
-      // const responseTaskB = await fetch(`http://localhost:3001/empresa_b/tasks`);
-  
+
     } catch (error) {
       console.error("Fetch error:", error);
     }
   };
-  
-  
-
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
