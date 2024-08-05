@@ -6,19 +6,23 @@ import { useEffect, useState } from "react";
 export default function Home() {
   const [idenviar, setIdenviar] = useState('');
   const [resspuesta, setResspuesta] = useState('valor inicial');
-  
+
   useEffect(() => {
-    pruebaMultenant().then(result => result).catch(error => console.log(error));
+    //pruebaMultenant().then(result => result).catch(error => console.log(error));
   }, []);
 
   const pruebaMultenant = async () => {
     try {
       // Obtener usuarios de empresa_a
-      const responseA = await fetch(`http://localhost:3001/table-structure?schema=empresa_a&table=kpi`, {
-        method: "GET",
+      const responseA = await fetch(`localhost:3000/tenants`, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify({
+          companyName: "preubaMiguel",
+          tenantId: "preubamiguel"
+        }),
       });
 
       if (!responseA.ok) {
