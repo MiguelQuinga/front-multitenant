@@ -77,7 +77,7 @@ export default function EmployeeList() { //registrar un empleado dado un tenant
                 </button>
             </div> <br />
             <Link href={`/companies/${tenantName}`}
-                className="w-full py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[200px] text-center"
+                className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[200px] text-center"
             >
                 Crear Empleado
             </Link><br />
@@ -97,7 +97,7 @@ export default function EmployeeList() { //registrar un empleado dado un tenant
                                 )}
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody className='text-black'>
                             {employees.map((employee, index) => (
                                 <tr
                                     key={employee._id}
