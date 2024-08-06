@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function PageTaskListEmployee() {
   return (
-    <div>TASK LIST INTERFACE</div>
+    <div className='bg-red-100'>TASK LIST INTERFACE</div>
   )
 }
