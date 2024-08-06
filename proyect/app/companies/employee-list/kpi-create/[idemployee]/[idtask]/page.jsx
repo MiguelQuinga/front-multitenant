@@ -1,9 +1,11 @@
 "use client"
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams  } from 'next/navigation';
 import { useState } from 'react';
 
 const CreateKpi = () => {
   const router = useRouter();
+  let params = useParams();
+  console.log('params: ', params)
   //const { idemployee, idtask } = router.query; // Accede a los parámetros de la URL
 
   const [title, setTitle] = useState('');
