@@ -1,6 +1,7 @@
 "use client"
 import React from 'react'
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 
 function Companies() {
 
@@ -37,50 +38,66 @@ function Companies() {
 
     return (
         <>
-            <div className="bg-blue-600 flex items-center justify-center min-h-screen flex-col">
-                <div className="flex flex-col items-center border-r-gray-800 border-gray-800 border-2 p-4 bg-slate-200 text-black">
-                    <p className='mb-2 font-semibold'>REGISTER COMPANY</p>
-                    <div className='flex flex-col items-center'>
-                        <div>
-                            <p>Company Name: </p>
-                            <input placeholder='CompanyExample'
-                                className='w-[90%]'
+            <div className="animated-gradient flex items-center justify-center min-h-screen flex-col">
+                <div className="flex flex-col items-center p-6 bg-white bg-opacity-70 rounded-lg shadow-lg backdrop-blur-md">
+                    <p className="mb-4 text-lg font-bold text-gray-800">REGISTER COMPANY</p>
+                    <div className="flex flex-col w-full space-y-4">
+                        <div className="flex flex-col">
+                            <label className="text-gray-700 font-semibold">Company Name:</label>
+                            <input
+                                type="text"
+                                placeholder="CompanyExample"
+                                className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 value={companyRegister}
-                                onChange={e => {
-                                    // Limitar la longitud del valor a 400 caracteres
+                                onChange={(e) => {
                                     if (e.target.value.length <= 90) {
-                                        setCompanyRegister(e.target.value)
+                                        setCompanyRegister(e.target.value);
                                     }
-                                }} />
+                                }}
+                            />
                         </div>
-                        <div>
-                            <p>Id Company: </p>
-                            <input placeholder='CompanyExample'
-                                className='w-[90%]'
+                        <div className="flex flex-col">
+                            <label className="text-gray-700 font-semibold">Id Company:</label>
+                            <input
+                                type="text"
+                                placeholder="CompanyExample"
+                                className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 value={idCompanyRegister}
-                                onChange={e => {
-                                    // Limitar la longitud del valor a 400 caracteres
+                                onChange={(e) => {
                                     if (e.target.value.length <= 90) {
-                                        setIdCompanyRegister(e.target.value)
+                                        setIdCompanyRegister(e.target.value);
                                     }
-                                }} />
+                                }}
+                            />
                         </div>
+                    </div>
+
+                    <div className="flex justify-center w-full mt-6 space-x-6">
+                        <Link
+                            href="./"
+                            className="px-6 py-2 text-sm font-semibold text-white bg-red-400 rounded-full hover:bg-red-500"
+                        >
+                            CANCEL
+                        </Link>
+
+                        <button
+                            onClick={() => {
+                                pruebaMultenant();
+                            }}
+                            className="px-6 py-2 text-sm font-semibold text-white bg-green-400 rounded-full hover:bg-green-500"
+                        >
+                            Enviar
+                        </button>
+
+                        <Link
+                            href="/companies/employee-list"
+                            className="px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-700"
+                        >
+                            NEXT
+                        </Link>
                     </div>
                 </div>
 
-                <div className='flex space-x-16'>
-                    <button className='mt-5 py-1 px-5 text-[14px] rounded-full text-center bg-red-300 hover:bg-red-400 text-black'>
-                        CANCEL
-                    </button>
-
-                    <button onClick={() => { pruebaMultenant() }} className="mt-5 py-1 px-5 text-[14px] rounded-full text-center bg-green-300 hover:bg-green-500 text-black">
-                        enviar
-                    </button>
-
-                    <button className='mt-5 py-1 px-5 text-[14px] rounded-full text-center bg-[#65579d] hover:bg-[#6650bc] text-white'>
-                        NEXT
-                    </button>
-                </div>
 
             </div>
         </>

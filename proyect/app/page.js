@@ -1,6 +1,7 @@
 "use client"
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import Link from 'next/link';
 
 
 export default function Home() {
@@ -38,19 +39,12 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="text-[30px]">Pruebas para multi-tenant</div>
-      <div className="bg-green-200 p-5 flex flex-col">
-        <p>campo 1: id</p>
-        <input value={idenviar} onChange={setIdenviar} type="text" className="" />
-        <button onClick={() => { pruebaMultenant() }} className="bg-green-300">
-          enviar
-        </button>
-      </div><br />
-
-      <div className="bg-green-500 p-5">
-        <p>respuesta: {resspuesta}</p>
-      </div>
+    <main className="animated-gradient flex min-h-screen items-center flex-col items-center justify-center p-24">
+            <Link href={`/companies`}
+                className=" py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 w-[200px] text-center"
+            >
+                Companies
+            </Link><br />
     </main>
   );
 }
