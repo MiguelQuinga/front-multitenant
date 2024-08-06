@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams  } from 'next/navigation';
 import Link from 'next/link';
 
 export default function PageTaskListEmployee({ params }) {
@@ -44,7 +44,7 @@ export default function PageTaskListEmployee({ params }) {
     const hasTasks = tasks.length > 0;
 
     const handleButtonClickKPI = (idEmployee, idTasks) => {
-        router.push(`/companies/employee-list/${idEmployee}/${idTasks}`);
+        router.push(`/companies/employee-list/kpi-create/${idEmployee}/${idTasks}`);
     };
 
     const handleButtonClickLogs = (idEmployee, idTasks ) => {
