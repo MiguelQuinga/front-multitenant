@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
-export default function EmployeeList() { //registrar un empleado dado un tenant
+export default function EmployeeList() { 
     const [tenantName, setTenantName] = useState('');
     const [employees, setEmployees] = useState([]);
     const router = useRouter();
