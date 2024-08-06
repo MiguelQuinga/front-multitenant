@@ -1,11 +1,13 @@
 "use client"
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 
-export default function PageTaskListEmployee({ params }) {
-    const [tenantId, setTenantId] = useState('');
-    const [employeeId, setEmployeeId] = useState(params.idemployee);
+export default function PageTaskListEmployee() {
+    let params = useParams();
+    console.log('params: ', params)
+    const [tenantId, setTenantId] = useState(params.idtenant);
+    const [employeeId, setEmployeeId] = useState(params.idEmployee);
     const [tasks, setTasks] = useState([]);
     const router = useRouter();
 
@@ -43,12 +45,12 @@ export default function PageTaskListEmployee({ params }) {
     const tableHeaders = getTableHeaders();
     const hasTasks = tasks.length > 0;
 
-    const handleButtonClickKPI = (idEmployee, idTasks) => {
-        router.push(`/companies/employee-list/kpi-create/${idEmployee}/${idTasks}`);
+    const handleButtonClickKPI = () => {
+        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`);
     };
 
-    const handleButtonClickLogs = (idEmployee, idTasks) => {
-        router.push(`/companies/employee-list/${idEmployee}/${idTasks}`);
+    const handleButtonClickLogs = () => {
+        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createTaskLogs`);
     };
 
     const renderCellContent = (header, value) => {
@@ -83,7 +85,7 @@ export default function PageTaskListEmployee({ params }) {
                         id="tenantName"
                         type="text"
                         placeholder="CompanyExample"
-                        className="block w-full border border-gray-300 rounded-lg px-3 py-2 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
+                        className="text-black block w-full border border-gray-300 rounded-lg px-3 py-2 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition"
                         value={tenantId}
                         onChange={e => {
                             // Limitar la longitud del valor a 400 caracteres
@@ -101,7 +103,7 @@ export default function PageTaskListEmployee({ params }) {
                 </button>
             </div> <br />
 
-            <Link href={`/companies/employee-list/${employeeId}/tasks-employee-create`}
+            <Link href={`/companies/${params.idtenant}/${params.idEmployee}/CreateTask`}
                 className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[200px] text-center"
             >
                 Asignar Tarea Empleado
@@ -135,13 +137,13 @@ export default function PageTaskListEmployee({ params }) {
                                     ))}
                                     <td className="py-3 px-2">
                                         <button
-                                            onClick={() => handleButtonClickKPI(employeeId, task._id, 'kpis')}
+                                            onClick={() => handleButtonClickKPI()}
                                             className="py-1 px-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 mb-2"
                                         >
                                             KPI
                                         </button>
                                         <button
-                                            onClick={() => handleButtonClickLogs(employeeId, task._id, 'logs')}
+                                            onClick={() => handleButtonClickLogs()}
                                             className="py-1 px-3 bg-orange-500 text-white rounded-full hover:bg-orange-600"
                                         >
                                             Logs

@@ -44,8 +44,8 @@ export default function EmployeeList() {
     const tableHeaders = getTableHeaders();
     const hasEmployees = employees.length > 0;
 
-    const handleButtonClick = (id) => {
-        router.push(`/companies/employee-list/${id}/`);
+    const handleButtonClick = (idTenant, idEmployee) => {
+        router.push(`/companies/${idTenant}/${idEmployee}`);
     };
     //<div className="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center min-h-screen p-4 flex-col">
     return (<>
@@ -79,7 +79,7 @@ export default function EmployeeList() {
                     Listar Empleados
                 </button>
             </div> <br />
-            <Link href={`/companies/${tenantName}`}
+            <Link href={`/companies/${tenantName}/create-employee`}
                 className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[200px] text-center"
             >
                 Crear Empleado
@@ -115,7 +115,7 @@ export default function EmployeeList() {
                                     ))}
                                     <td className="py-3 px-6">
                                         <button
-                                            onClick={() => handleButtonClick(employee._id)}
+                                            onClick={() => handleButtonClick(tenantName,employee._id)}
                                             className="py-1 px-3 bg-blue-500 text-white rounded-full hover:bg-blue-600"
                                         >
                                             Task

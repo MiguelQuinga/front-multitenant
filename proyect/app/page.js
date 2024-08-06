@@ -39,7 +39,7 @@ export default function Home() {
   };
 
   return (
-    <main className="animated-gradient flex min-h-screen items-center flex-col items-center justify-center p-24">
+    <main className="animated-gradient flex min-h-screen items-center flex-col justify-center p-24">
             <Link href={`/companies`}
                 className=" py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 w-[200px] text-center"
             >
