@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
-import './style.css'
 
 export default function EmployeeList() { //registrar un empleado dado un tenant
     const [tenantName, setTenantName] = useState('');
@@ -46,7 +45,7 @@ export default function EmployeeList() { //registrar un empleado dado un tenant
     const hasEmployees = employees.length > 0;
 
     const handleButtonClick = (id) => {
-        router.push(`/companies/employee-list/${id}`);
+        router.push(`/companies/employee-list/${id}/`);
     };
     //<div className="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center min-h-screen p-4 flex-col">
     return (<>
