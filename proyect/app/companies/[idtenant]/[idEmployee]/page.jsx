@@ -47,7 +47,7 @@ export default function PageTaskListEmployee({ params }) {
         router.push(`/companies/employee-list/kpi-create/${idEmployee}/${idTasks}`);
     };
 
-    const handleButtonClickLogs = (idEmployee, idTasks ) => {
+    const handleButtonClickLogs = (idEmployee, idTasks) => {
         router.push(`/companies/employee-list/${idEmployee}/${idTasks}`);
     };
 
@@ -70,7 +70,7 @@ export default function PageTaskListEmployee({ params }) {
             </Link>
 
             <div className='mt-10'>
-                <h2 className='text-center text-[32px] text-rose-900'>Assign tasks</h2>
+                <h2 className='text-center text-[32px] text-rose-900'>List tasks</h2>
                 <p className='text-[24px] text-rose-950'>Employee: {employeeId}</p>
             </div>
 
@@ -106,7 +106,6 @@ export default function PageTaskListEmployee({ params }) {
             >
                 Asignar Tarea Empleado
             </Link><br />
-
             {/*---------- tabla dinámica para tasks con campos variables ----------*/}
             <div className="flex justify-center">
                 <div className="overflow-x-auto">
