@@ -99,7 +99,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
     return (<>
         <div className="animated-gradient flex flex-col items-center justify-center min-h-screen p-8">
 
-            <Link href="/companies/employee-list" className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href={`/companies/${params.idtenant}/${params.idEmployee}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
 
