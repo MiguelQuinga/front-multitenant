@@ -1,6 +1,7 @@
 "use client";
 import { useRouter, useParams } from 'next/navigation';
 import { useState } from 'react';
+import Link from 'next/link';
 
 export default function CreateKpi() {
   const router = useRouter();
@@ -66,6 +67,10 @@ export default function CreateKpi() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 p-6 animated-gradient">
+      <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+        ⬅️ Back
+      </Link>
+
       <div className="bg-white/80 backdrop-blur-md shadow-lg rounded-lg p-8 w-full max-w-lg">
         <h1 className="text-3xl font-semibold mb-6 text-center text-gray-800">Crear KPI para Tarea</h1>
         <form onSubmit={handleSubmit}>

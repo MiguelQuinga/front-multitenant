@@ -103,7 +103,7 @@ export default function PageTaskLogsKpis() {
 
     return (
         <div className="animated-gradient flex items-center justify-center min-h-screen p-4 flex-col">
-            <Link href="/companies/employee-list" className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href={`/companies/${params.idtenant}/${params.idEmployee}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
 
@@ -144,13 +144,13 @@ export default function PageTaskLogsKpis() {
                     </div> <br />
 
                     <div className='flex justify-evenly'>
-                        <Link href={`/companies/${params.idtenant}/${params.idEmployee}/CreateTask`}
+                        <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createTaskLogs`}
                             className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[150px] text-center"
                         >
                             Registrar Log
                         </Link>
 
-                        <Link href={`/companies/${params.idtenant}/${params.idEmployee}/CreateTask`}
+                        <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`}
                             className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[150px] text-center"
                         >
                             Registrar KPI
