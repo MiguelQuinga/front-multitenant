@@ -5,9 +5,9 @@ import { useState } from 'react';
 export default function CreateKpi() {
   const router = useRouter();
   let params = useParams();
-  console.log('params: ',params)
-  console.log('params.idTask: ',params.IdTask)
-  console.log('params.idEmployee: ',params.idEmployee)
+  console.log('params: ', params)
+  console.log('params.idTask: ', params.IdTask)
+  console.log('params.idEmployee: ', params.idEmployee)
 
   const [title, setTitle] = useState('');
   const [target, setTarget] = useState('');
@@ -104,11 +104,11 @@ export default function CreateKpi() {
             <h2 className="text-lg font-semibold mb-4 text-gray-700">Campos Adicionales</h2>
             {additionalFields.map((field, index) => (
               <div key={index} className="mb-4 p-4 bg-gray-100 rounded-lg">
-                <div className="mb-2 flex items-center space-x-4">
+                <div className="mb-2 flex flex-col items-center space-y-4">
                   <select
                     value={field.type}
                     onChange={(e) => handleFieldChange(index, 'type', e.target.value)}
-                    className="w-1/4 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   >
                     <option value="string">String</option>
                     <option value="number">Number</option>
@@ -120,19 +120,19 @@ export default function CreateKpi() {
                     value={field.name}
                     onChange={(e) => handleFieldChange(index, 'name', e.target.value)}
                     required
-                    className="w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <input
                     type={field.type === 'number' ? 'number' : 'text'}
                     placeholder="Valor"
                     value={field.value}
                     onChange={(e) => handleFieldChange(index, 'value', e.target.value)}
-                    className="w-1/3 p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    className="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                   />
                   <button
                     type="button"
                     onClick={() => handleRemoveField(index)}
-                    className="text-red-500 hover:text-red-700 focus:outline-none"
+                    className="text-red-500 hover:text-red-700 focus:outline-none bg-red-200 h-[30px] w-[30px] rounded flex items-center justify-center hover:bg-red-400"
                   >
                     &times;
                   </button>
