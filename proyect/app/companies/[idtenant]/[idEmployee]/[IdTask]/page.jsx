@@ -80,6 +80,9 @@ export default function PageTaskLogsKpis() {
 
     const tableKPIsHeaders = getTableKPIsHeaders();
     const hasKPIs = kpis.length > 0;
+    const handleButtonClickKPIEvaluetion = (id_kpi) => {
+        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/${id_kpi}/kpi-evaluation`);
+    };
 
     const handleButtonClickKPI = () => {
         router.push(`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`);
@@ -109,7 +112,7 @@ export default function PageTaskLogsKpis() {
 
             <div className='w-full flex mb-3'>
 
-                <div>
+                <div className='w-1/3'>
                     <div className='mt-10 flex flex-col items-center justify-center'>
                         <h2 className='text-[28px] text-white'>List TaskLogs and KPI's</h2>
                         <p className='text-[20px] text-rose-950'>Employee: {employeeId}</p>
@@ -159,7 +162,7 @@ export default function PageTaskLogsKpis() {
 
                 </div>
 
-                <div className='mx-2 flex items-center justify-center'>
+                <div className='mx-2 flex items-center justify-center w-2/3'>
                     <div className="flex justify-center">
                         <div className="overflow-x-auto">
                             <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
@@ -188,10 +191,10 @@ export default function PageTaskLogsKpis() {
                                             ))}
                                             <td className="py-3 px-2">
                                                 <button
-                                                    onClick={() => handleButtonClickKPI()}
+                                                    onClick={() => handleButtonClickKPIEvaluetion(kpi._id)}
                                                     className="py-1 px-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 mb-2"
                                                 >
-                                                    Edit
+                                                    Evaluation
                                                 </button>
                                             </td>
                                         </tr>
