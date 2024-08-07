@@ -107,11 +107,11 @@ export default function PageTaskLogsKpis() {
                 ⬅️ Back
             </Link>
 
-            <div className='bg-blue-400 w-full flex mb-3'>
+            <div className='w-full flex mb-3'>
 
                 <div>
                     <div className='mt-10 flex flex-col items-center justify-center'>
-                        <h2 className='text-[28px] text-rose-900'>List TaskLogs and KPI's</h2>
+                        <h2 className='text-[28px] text-white'>List TaskLogs and KPI's</h2>
                         <p className='text-[20px] text-rose-950'>Employee: {employeeId}</p>
                         <p className='text-[20px] text-rose-950'>Task: {taskId}</p>
                     </div>
@@ -159,7 +159,7 @@ export default function PageTaskLogsKpis() {
 
                 </div>
 
-                <div>
+                <div className='mx-2 flex items-center justify-center'>
                     <div className="flex justify-center">
                         <div className="overflow-x-auto">
                             <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
