@@ -23,7 +23,7 @@ export default function CreateTaskLogs() {
     });
 
     const onFormSubmit = async (data) => {
-        const { additionalFields } = data.employee;
+        const { additionalFields } = data.tasklogs;
         const additionalData = additionalFields.reduce((acc, field) => {
             if (field.key && field.value) {
                 switch (field.type) {
