@@ -39,7 +39,7 @@ export default function PageTaskLogsKpis() {
     const getKPIsList = async () => {
         try {
             //Obtener tareas de empleados con x-tenant-id
-            const response = await fetch(`http://localhost:3000/employees/${employeeId}/task/${taskId}/tasklogs`, {
+            const response = await fetch(`http://localhost:3000/employees/${employeeId}/tasks/${taskId}/kpis`, {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
