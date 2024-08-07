@@ -159,7 +159,7 @@ export default function PageTaskLogsKpis() {
 
                 </div>
 
-                <div>
+                <div className='mx-2 flex items-center justify-center'>
                     <div className="flex justify-center">
                         <div className="overflow-x-auto">
                             <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
