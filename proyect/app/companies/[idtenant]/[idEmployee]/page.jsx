@@ -46,7 +46,7 @@ export default function PageTaskListEmployee() {
     const hasTasks = tasks.length > 0;
 
     const handleButtonClickKPI = (IdTask) => {
-        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${IdTask}/createKPI`);
+        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${IdTask}`);
     };
 
     const handleButtonClickLogs = () => {
