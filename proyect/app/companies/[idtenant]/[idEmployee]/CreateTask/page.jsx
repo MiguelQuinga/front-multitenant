@@ -1,11 +1,15 @@
 "use client"
 import React, { useState, useEffect } from 'react';
 import { useFieldArray, useForm } from 'react-hook-form';
+import { useRouter, useParams } from 'next/navigation';
 import Link from 'next/link';
 import './tasks.css'
 
-export default function AssignTasks({ params }) { //registrar un empleado dado un tenant
-    const [idEmproee, setIdEmproee] = useState(params.idemployee);
+export default function AssignTasks() { //registrar un empleado dado un tenant
+    let params = useParams();
+    console.log('params: ', params)
+    console.log('params.idtenant: ', params.idtenant)
+    const router = useRouter();
 
     const { register, handleSubmit, control, formState: { errors } } = useForm({
         defaultValues: {
@@ -25,32 +29,6 @@ export default function AssignTasks({ params }) { //registrar un empleado dado u
         control,
         name: "task.additionalFields"
     });
-
-
-    const asignedTask = async () => {
-        try {
-            // Obtener usuarios de empresa_a
-            const responseA = await fetch(`http://localhost:3000/tenants`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    companyName: companyRegister,
-                    tenantId: idCompanyRegister
-                }),
-            });
-
-            if (!responseA.ok) {
-                throw new Error(`HTTP error! Status: ${responseA.status}`);
-            }
-
-            const data = await responseA.json();
-
-        } catch (error) {
-            console.error("Fetch error:", error);
-        }
-    };
 
     const onFormSubmit = (data) => {
         const { title, priority, startDate, endDate, concurrence, state, additionalFields } = data.task;
@@ -73,19 +51,50 @@ export default function AssignTasks({ params }) { //registrar un empleado dado u
             return acc;
         }, {});
 
+        const priorityNumber = Number(priority);
+        const concurrenceBool = concurrence === "true";
+
         const formattedData = {
             title,
-            priority,
-            startDate,
-            endDate,
-            concurrence,
+            priority: priorityNumber,
+            startDate: new Date(startDate).toISOString(),
+            endDate: new Date(endDate).toISOString(),
+            concurrence: concurrenceBool,
             state,
             ...additionalData,
         };
 
         console.log(formattedData);
-        // Aquí puedes realizar la petición API con formattedData
+        asignedTask(formattedData)
     }
+
+    const asignedTask = async (formattedData) => {
+        try {
+            // Obtener usuarios de empresa_a
+            const responseA = await fetch(`http://localhost:3000/employees/${params.idEmployee}/tasks`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-tenant-id": params.idtenant, //Pasar el id de la empresa como x-tenant-id
+                },
+                body: JSON.stringify(formattedData),
+            });
+
+            if (!responseA.ok) {
+                throw new Error(`HTTP error! Status: ${responseA.status}`);
+            }
+
+            if (responseA.ok) {
+                alert('KPI creado exitosamente');
+                // Redirigir o realizar otras acciones
+            } else {
+                alert('Error al crear el KPI');
+            }
+
+        } catch (error) {
+            console.error("Fetch error:", error);
+        }
+    };
 
     return (<>
         <div className="animated-gradient flex flex-col items-center justify-center min-h-screen p-8">
@@ -97,7 +106,7 @@ export default function AssignTasks({ params }) { //registrar un empleado dado u
             <div className="w-full max-w-2xl bg-white bg-opacity-80 p-8 rounded-lg shadow-lg backdrop-blur-md">
                 <div className='my-2 flex flex-col items-center'>
                     <h2 className='text-center text-[32px] text-black'>Assign tasks</h2>
-                    <p className='text-[24px] text-rose-950'>EmployeeId: {idEmproee}</p>
+                    <p className='text-[24px] text-rose-950'>EmployeeId: {params.idEmployee}</p>
                 </div>
 
                 <form onSubmit={handleSubmit(onFormSubmit)}>
@@ -115,7 +124,7 @@ export default function AssignTasks({ params }) { //registrar un empleado dado u
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Priority</label>
                             <input
-                                type="text"
+                                type="number"
                                 placeholder="Priority"
                                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 {...register("task.priority", { required: "Priority is required" })}
@@ -125,7 +134,7 @@ export default function AssignTasks({ params }) { //registrar un empleado dado u
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Start Date</label>
                             <input
-                                type="text"
+                                type="date"
                                 placeholder="Start Date"
                                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 {...register("task.startDate", { required: "Start Date is required" })}
@@ -136,35 +145,38 @@ export default function AssignTasks({ params }) { //registrar un empleado dado u
                         <div>
                             <label className="block text-sm font-medium text-gray-700">End Date</label>
                             <input
-                                type="text"
+                                type="date"
                                 placeholder="End Date"
                                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 {...register("task.endDate", { required: "End Date is required" })}
                             />
                             {errors.task?.endDate && <p className="mt-1 text-sm text-red-500">{errors.task.endDate.message}</p>}
                         </div>
-
                         <div>
                             <label className="block text-sm font-medium text-gray-700">Concurrence</label>
-                            <input
-                                type="text"
-                                placeholder="Concurrence"
+                            <select
                                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 {...register("task.concurrence", { required: "Concurrence is required" })}
-                            />
+                            >
+                                <option value="true">Yes</option>
+                                <option value="false">No</option>
+                            </select>
                             {errors.task?.concurrence && <p className="mt-1 text-sm text-red-500">{errors.task.concurrence.message}</p>}
                         </div>
 
+
                         <div>
                             <label className="block text-sm font-medium text-gray-700">State</label>
-                            <input
-                                type="text"
-                                placeholder="State"
+                            <select
                                 className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 {...register("task.state", { required: "State is required" })}
-                            />
+                            >
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                            </select>
                             {errors.task?.state && <p className="mt-1 text-sm text-red-500">{errors.task.state.message}</p>}
                         </div>
+
                     </div>
 
                     <div className='space-y-4'>
