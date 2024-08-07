@@ -45,8 +45,12 @@ export default function PageTaskListEmployee() {
     const tableHeaders = getTableHeaders();
     const hasTasks = tasks.length > 0;
 
-    const handleButtonClick = (taskId) => {
-        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${taskId}`);
+    const handleButtonClickKPI = (IdTask) => {
+        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${IdTask}/createKPI`);
+    };
+
+    const handleButtonClickLogs = () => {
+        router.push(`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createTaskLogs`);
     };
 
     const renderCellContent = (header, value) => {
@@ -133,7 +137,7 @@ export default function PageTaskListEmployee() {
                                     ))}
                                     <td className="py-3 px-2">
                                         <button
-                                            onClick={() => handleButtonClick(task._id)}
+                                            onClick={() => handleButtonClickKPI(task._id)}
                                             className="py-1 px-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 mb-2"
                                         >
                                             Logs and KPIs
