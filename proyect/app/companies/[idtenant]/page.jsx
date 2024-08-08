@@ -50,12 +50,12 @@ export default function EmployeeList() {
     //<div className="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center min-h-screen p-4 flex-col">
     return (<>
         <div className="homepage flex items-center justify-center min-h-screen p-4 flex-col">
-            <Link href="/companies" className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href="/companies" className="absolute top-4 left-4 bg-[--secondary-color] bg-opacity-50 hover:bg-[--primary-color] text-white font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
-            <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70">
-                <div className="mb-4">
-                    <label htmlFor="tenantName" className="block text-sm font-medium text-gray-700 mb-2">
+            <div className="bg-[--primary-color] rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70 custom-shadow">
+                <div className="flex flex-col items-center space-y-2">
+                    <label htmlFor="tenantName" className="block text-xl font-medium text-white mb-2">
                         Company Name:
                     </label>
                     <input
@@ -71,23 +71,23 @@ export default function EmployeeList() {
                             }
                         }}
                     />
-                </div>
-                <button
+                    <button
                     onClick={getEmployeeList}
-                    className="w-full py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors"
+                    className="w-[85%] mt-2 py-2 bg-[--complementary-color] text-black rounded-lg font-semibold hover:bg-slate-300 transition-colors"
                 >
                     Listar Empleados
                 </button>
-            </div> <br />
+                </div>
+            </div> 
             <Link href={`/companies/${tenantName}/create-employee`}
-                className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[200px] text-center"
+                className="mt-3 py-2 bg-[--secondary-color] text-white rounded-lg font-semibold hover:bg-purple-800 transition-colors w-[200px] text-center"
             >
                 Crear Empleado
             </Link><br />
             {/*---------- tabla dinámica para empleados con campos variables ----------*/}
             <div className="flex justify-center">
                 <div className="overflow-x-auto">
-                    <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                    <table className="min-w-full bg-slate-300 shadow-md rounded-lg overflow-hidden border-2">
                         <thead className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
                             <tr>
                                 {tableHeaders.map((header) => (

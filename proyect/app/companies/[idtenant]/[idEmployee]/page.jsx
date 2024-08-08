@@ -67,18 +67,18 @@ export default function PageTaskListEmployee() {
 
     return (
         <div className="homepage flex items-center justify-center min-h-screen p-4 flex-col">
-            <Link href="/companies/employee-list" className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href="/companies/employee-list" className="absolute top-4 left-4 bg-[--primary-color] bg-opacity-50 hover:bg-[--secondary-color] text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
 
-            <div className='mt-10'>
-                <h2 className='text-center text-[32px] text-rose-900'>List tasks</h2>
-                <p className='text-[24px] text-rose-950'>Employee: {employeeId}</p>
+            <div className='my-10'>
+                <h2 className='text-center text-[32px] text-[--primary-color]'>List tasks</h2>
+                <p className='text-[24px] text-[--secondary-color]'>Employee: {employeeId}</p>
             </div>
 
-            <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70">
-                <div className="mb-4">
-                    <label htmlFor="tenantName" className="block text-sm font-medium text-gray-700 mb-2">
+            <div className="bg-[--primary-color] rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70 custom-shadow">
+                <div className="flex flex-col items-center space-y-2">
+                    <label htmlFor="tenantName" className="block text-xl font-medium text-white mb-2">
                         Company Name:
                     </label>
                     <input
@@ -94,24 +94,25 @@ export default function PageTaskListEmployee() {
                             }
                         }}
                     />
+                    <button
+                        onClick={getTasksListEmployee}
+                        className="w-[85%] mt-2 py-2 bg-[--complementary-color] text-black rounded-lg font-semibold hover:bg-slate-300 transition-colors"
+                    >
+                        Listar Tasks-Employee
+                    </button>
                 </div>
-                <button
-                    onClick={getTasksListEmployee}
-                    className="w-full py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors"
-                >
-                    Listar Tasks-Employee
-                </button>
+
             </div> <br />
 
             <Link href={`/companies/${params.idtenant}/${params.idEmployee}/CreateTask`}
-                className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[200px] text-center"
+                className="mt-5 py-2 bg-[--secondary-color] text-white rounded-lg font-semibold hover:bg-purple-800 transition-colors w-[200px] text-center"
             >
                 Asignar Tarea Empleado
             </Link><br />
             {/*---------- tabla dinámica para tasks con campos variables ----------*/}
             <div className="flex justify-center">
                 <div className="overflow-x-auto">
-                    <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                    <table className="min-w-full bg-slate-300 shadow-md rounded-lg overflow-hidden border-2">
                         <thead className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
                             <tr>
                                 {tableHeaders.map((header) => (
