@@ -2,7 +2,7 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import Link from 'next/link';
-
+import { BsBuildings } from "react-icons/bs";
 
 export default function Home() {
   const [idenviar, setIdenviar] = useState('');
@@ -40,11 +40,21 @@ export default function Home() {
 
   return (
     <main className="animated-gradient flex min-h-screen items-center flex-col justify-center p-24">
-            <Link href={`/companies`}
-                className=" py-2 bg-green-500 text-white rounded-lg hover:bg-green-600 w-[200px] text-center"
-            >
-                Companies
-            </Link><br />
+      <div className=" container flex flex-col items-center justify-center gap-16 sm:flex-row">
+        <Link href={`/companies`} className="card">
+          <div>
+            <figure className="icon-containder">
+              <BsBuildings
+                className="w-44 h-44 object-cover icon"
+                alt="companyImage" />
+            </figure>
+            <div className="contenido">
+              <h3>Company</h3>
+              <p>Chasqi for Companies</p>
+            </div>
+          </div>
+        </Link>
+      </div>
     </main>
   );
 }
