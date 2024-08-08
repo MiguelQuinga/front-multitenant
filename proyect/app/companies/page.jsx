@@ -38,7 +38,7 @@ function Companies() {
 
     return (
         <>
-            <div className="animated-gradient flex items-center justify-center min-h-screen flex-col">
+            <div className="homepage flex items-center justify-center min-h-screen flex-col">
                 <div className="flex flex-col items-center p-6 bg-white bg-opacity-70 rounded-lg shadow-lg backdrop-blur-md">
                     <p className="mb-4 text-lg font-bold text-gray-800">REGISTER COMPANY</p>
                     <div className="flex flex-col w-full space-y-4 text-black">

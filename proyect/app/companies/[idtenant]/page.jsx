@@ -49,7 +49,7 @@ export default function EmployeeList() {
     };
     //<div className="bg-gradient-to-r from-blue-500 to-indigo-600 flex items-center justify-center min-h-screen p-4 flex-col">
     return (<>
-        <div className="animated-gradient flex items-center justify-center min-h-screen p-4 flex-col">
+        <div className="homepage flex items-center justify-center min-h-screen p-4 flex-col">
             <Link href="/companies" className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>

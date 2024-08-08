@@ -119,4 +119,6 @@ body {
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 45px;
+.homepage {
+  background: url('../public/assets/backgrounds/background_1.png') center/cover no-repeat;
 }
