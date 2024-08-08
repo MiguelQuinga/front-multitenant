@@ -9,6 +9,8 @@ export default function CreateKpi() {
   console.log('params: ', params)
   console.log('params.idTask: ', params.IdTask)
   console.log('params.idEmployee: ', params.idEmployee)
+  const [startDate, setStartDate] = useState('')
+  const [endDate, setEndDate] = useState('')
 
   const [title, setTitle] = useState('');
   const [target, setTarget] = useState('');
@@ -33,12 +35,13 @@ export default function CreateKpi() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const timeUnitNumber = Number(timeUnit);
     // Crear el cuerpo de la solicitud
     const kpiData = {
       title,
       target,
+      startDate: new Date(startDate).toISOString(),
+      endDate: new Date(endDate).toISOString(),
       timeUnit: timeUnitNumber, // Ensure timeUnit is a number
       ...additionalFields.reduce((obj, item) => {
         obj[item.name] = item.value;
@@ -103,6 +106,31 @@ export default function CreateKpi() {
               required
               className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
             />
+          </div>
+          <div className="mb-6">
+            <p className='block text-sm font-medium text-gray-700 mb-2'>Rango de fechas:</p>
+            <div className='w-full flex justify-between'>
+              <div className='w-[220px]'>
+                <p className='block text-sm font-medium text-gray-700 mb-2'>fecha de inicio:</p>
+                <input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  required
+                  className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+              </div>
+              <div className='w-[220px]'>
+                <p className='block text-sm font-medium text-gray-700 mb-2'>fecha de fin:</p>
+                <input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  required
+                  className="w-full p-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-purple-500"
+                />
+              </div>
+            </div>
           </div>
 
           <div className="mb-6">

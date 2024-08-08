@@ -15,6 +15,8 @@ export default function KpiEvaluation() {
         "registrada",
         "fecha_registro"])
     const [selectedField, setSelectedField] = useState("");
+    const [startDate, setStartDate] = useState('')
+    const [endDate, setEndDate] = useState('')
 
     useEffect(() => {
 
@@ -76,11 +78,25 @@ export default function KpiEvaluation() {
             <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
-            <div className='h-[300px] w-[500px] bg-white bg-opacity-50 p-10 rounded-lg shadow-lg backdrop-blur-sm'>
+            <div className='h-[400px] w-[500px] bg-white bg-opacity-50 p-10 rounded-lg shadow-lg backdrop-blur-sm'>
                 <p className='text-center text-xl font-bold'>KPI EVALUATION</p><br />
-                <button className='text-black bg-green-300 hover:bg-green-500 font-semibold py-2 px-4 rounded-full shadow-md transition-all' onClick={getFields}>
-                    obtener campos
-                </button><br />
+                <div className="mb-4 space-x-10">
+                    <p className='text-lg'>Rango de fechas:</p>
+                    <input
+                        type="date"
+                        value={startDate}
+                        onChange={(e) => setStartDate(e.target.value)}
+                        required
+                        className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                    <input
+                        type="date"
+                        value={endDate}
+                        onChange={(e) => setEndDate(e.target.value)}
+                        required
+                        className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    />
+                </div>
 
                 <div className='flex space-x-5 justify-center items-center'>
                     <p className='text-lg'>Campo a evaluar:</p>
@@ -96,6 +112,9 @@ export default function KpiEvaluation() {
                             </option>
                         ))}
                     </select>
+                <button className='text-black bg-green-300 hover:bg-green-500 font-semibold py-2 px-4 rounded-full shadow-md transition-all' onClick={getFields}>
+                    Obtener campos
+                </button><br />
                 </div><br />
 
                 <button className='text-black bg-green-300 hover:bg-green-500 font-semibold py-2 px-4 rounded-full shadow-md transition-all' onClick={getKPIEcaluation}>
@@ -104,6 +123,8 @@ export default function KpiEvaluation() {
             </div><br />
 
             <div className='h-[300px] w-[500px] bg-white bg-opacity-50 p-10 rounded-lg shadow-lg backdrop-blur-sm'>
+                <p className='text-center text-lg font-bold mb-4'>Objetivo: {kpiPercentage}%</p>
+                <p className='text-center text-lg font-bold mb-4'>Cantidad de días: {kpiPercentage}%</p>
                 <p className='text-center text-lg font-bold mb-4'>Barra de progreso: {kpiPercentage}%</p>
                 <div className="relative pt-1">
                     <div className="overflow-hidden h-4 mb-4 text-xs flex rounded bg-gray-200">
