@@ -103,7 +103,7 @@ export default function KpiEvaluation() {
             <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
-            <div className='h-[400px] w-[500px] bg-white bg-opacity-50 p-10 rounded-lg shadow-lg backdrop-blur-sm'>
+            <div className='h-[400px] w-[500px] bg-white bg-opacity-50 p-10 rounded-lg shadow-lg backdrop-blur-sm  text-[black]'>
                 <p className='text-center text-xl font-bold'>KPI EVALUATION</p><br />
                 <div className="mb-4 space-x-10">
                     <p className='text-lg'>Rango de fechas:</p>
@@ -151,11 +151,12 @@ export default function KpiEvaluation() {
                 </button><br />
             </div><br />
 
-            <div className='h-[300px] w-[500px] bg-white bg-opacity-50 p-10 rounded-lg shadow-lg backdrop-blur-sm'>
-            <p className='text-center text-lg font-bold mb-4'>Descripción: {kpiInformation.description}</p>
-                <p className='text-center text-lg font-bold mb-4'>Objetivo: {kpiInformation.target}</p>
-                <p className='text-center text-lg font-bold mb-4'>Cantidad de días: {kpiInformation.timeUnit}</p>
-                <p className='text-center text-lg font-bold mb-4'>Barra de progreso: {kpiPercentage}%</p>
+            <div className='h-[300px] w-[500px] bg-white bg-opacity-50 p-10 rounded-lg shadow-lg backdrop-blur-sm text-[black]'>
+                <p className='text-center text-lg font-bold mb-1'>Descripción: {kpiInformation.description}</p>
+                <p className='text-center text-lg font-bold mb-1'>Objetivo: {kpiInformation.target}</p>
+                <p className='text-center text-lg font-bold mb-1'>Cantidad de días: {kpiInformation.timeUnit}</p>
+                <p className='text-center text-lg font-bold mb-1'>Número de entregables: {kpiPercentage}%</p>
+                <p className='text-center text-lg font-bold mb-1'>Barra de progreso: {kpiPercentage}%</p>
                 <div className="relative pt-1">
                     <div className="overflow-hidden h-4 mb-4 text-xs flex rounded bg-gray-200">
                         <div style={{ width: `${kpiPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 transition-all"></div>
