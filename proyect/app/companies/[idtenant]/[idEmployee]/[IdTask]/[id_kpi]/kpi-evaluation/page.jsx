@@ -85,7 +85,7 @@ export default function KpiEvaluation() {
                 <div className='flex space-x-5 justify-center items-center'>
                     <p className='text-lg'>Campo a evaluar:</p>
                     <select
-                        className="p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="text-black p-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
                         value={selectedField}
                         onChange={handleSelectChange}
                     >

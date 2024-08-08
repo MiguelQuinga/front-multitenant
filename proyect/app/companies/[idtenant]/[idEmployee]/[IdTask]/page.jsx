@@ -122,7 +122,7 @@ export default function PageTaskLogsKpis() {
                     <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70">
                         <div className="mb-4">
                             <label htmlFor="tenantName" className="block text-sm font-medium text-gray-700 mb-2">
-                                Tenant Name:
+                                Company Name:
                             </label>
                             <input
                                 id="tenantName"
