@@ -3,9 +3,13 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --background-primary-button: #70919c;
+  --text-color-primary: #70919c;
+  --background-secundary-button: #70839C;
+  --primary-color: #A54895;
+  --secondary-color: #574595;
+  --tertiary-color: #1b1029;
+  --complementary-color: #FFFFFF;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -119,6 +123,8 @@ body {
   font-weight: 600;
   margin-bottom: 15px;
   font-size: 45px;
+}
+
 .homepage {
   background: url('../public/assets/backgrounds/background_1.png') center/cover no-repeat;
 }

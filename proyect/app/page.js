@@ -39,8 +39,8 @@ export default function Home() {
   };
 
   return (
-    <main className="animated-gradient flex min-h-screen items-center flex-col justify-center p-24">
-      <div className=" container flex flex-col items-center justify-center gap-16 sm:flex-row">
+    <main className="homepage flex min-h-screen items-center flex-col justify-center p-24">
+      <div className="container flex flex-col items-center justify-center gap-16 sm:flex-row">
         <Link href={`/companies`} className="card">
           <div>
             <figure className="icon-containder">
