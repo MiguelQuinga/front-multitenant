@@ -148,15 +148,21 @@ export default function PageTaskLogsKpis() {
 
                     <div className='flex justify-evenly'>
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createTaskLogs`}
-                            className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[150px] text-center"
+                            className="py-2 bg-green-500 text-white rounded-lg font-[12px] hover:bg-green-600 transition-colors w-[120px] text-center"
                         >
                             Registrar Log
                         </Link>
 
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`}
-                            className="py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors w-[150px] text-center"
+                            className="py-2 bg-blue-500 text-white rounded-lg font-[12px] hover:bg-blue-600 transition-colors w-[130px] text-center"
                         >
-                            Registrar KPI
+                            KPI Percentage
+                        </Link>
+
+                        <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPIForm`}
+                            className="py-2 bg-yellow-500 text-black rounded-lg font-[12px] hover:bg-yellow-600 transition-colors w-[120px] text-center"
+                        >
+                            KPI Form
                         </Link>
                     </div>
 
