@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export default function KpiEvaluation() {
     let params = useParams();
-    console.log('params: ', params)
+    //console.log('params: ', params)
     const [kpiPercentage, setKpiPercentage] = useState(0)
     const [fieldFilter, setFieldFilter] = useState(["nombre_cliente",
         "numero_factura",
@@ -39,7 +39,7 @@ export default function KpiEvaluation() {
             }
 
             const data1 = await response.json();
-            console.log("field result: ", data1)
+            //console.log("field result: ", data1)
             setFieldFilter(data1);
 
         } catch (error) {
@@ -64,7 +64,8 @@ export default function KpiEvaluation() {
             }
 
             const data1 = await response.json();
-            setKpiPercentage(data1.kpiPercentage);
+            console.log('data1: ', data1)
+            setKpiPercentage(data1);
 
         } catch (error) {
             console.error("Fetch error: ", error);
@@ -155,11 +156,11 @@ export default function KpiEvaluation() {
                 <p className='text-center text-lg font-bold mb-1'>Descripción: {kpiInformation.description}</p>
                 <p className='text-center text-lg font-bold mb-1'>Objetivo: {kpiInformation.target}</p>
                 <p className='text-center text-lg font-bold mb-1'>Cantidad de días: {kpiInformation.timeUnit}</p>
-                <p className='text-center text-lg font-bold mb-1'>Número de entregables: {kpiPercentage}%</p>
-                <p className='text-center text-lg font-bold mb-1'>Barra de progreso: {kpiPercentage}%</p>
+                <p className='text-center text-lg font-bold mb-1'>Número de entregables: {kpiPercentage.totalCount}</p>
+                <p className='text-center text-lg font-bold mb-1'>Barra de progreso: {kpiPercentage.kpiPercentage}%</p>
                 <div className="relative pt-1">
                     <div className="overflow-hidden h-4 mb-4 text-xs flex rounded bg-gray-200">
-                        <div style={{ width: `${kpiPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 transition-all"></div>
+                        <div style={{ width: `${kpiPercentage.kpiPercentage}%` }} className="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-green-500 transition-all"></div>
                     </div>
                 </div>
             </div>
