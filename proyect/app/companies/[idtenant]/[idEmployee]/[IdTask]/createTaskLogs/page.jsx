@@ -71,15 +71,15 @@ export default function CreateTaskLogs() {
 
     return (<>
         <div className="homepage flex items-center justify-center min-h-screen p-8">
-            <Link href="/companies" className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href="/companies" className="absolute top-4 left-4 bg-[--secondary-color] bg-opacity-50 hover:bg-[--primary-color] text-white font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
-            <div className="w-full max-w-2xl bg-white bg-opacity-80 p-8 rounded-lg shadow-lg backdrop-blur-md">
+            <div className="w-full max-w-2xl bg-[--primary-color] bg-opacity-80 p-8 rounded-lg shadow-lg backdrop-blur-md">
                 <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-6">
-                    <h2 className="text-center text-3xl font-semibold text-gray-800 mb-6">Register TaskLog</h2>
+                    <h2 className="text-center text-3xl font-semibold text-[--complementary-color] mb-2">Register TaskLog</h2>
 
                     <div className="space-y-4">
-                        <label className="block text-sm font-medium text-gray-700 ">Additional Fields</label>
+                        <label className="block text-xl font-medium text-[--complementary-color]">Additional Fields</label>
                         {fields.map((field, index) => (
                             <div key={field.id} className="flex flex-col space-y-2 mb-4 border-t border-gray-200 pt-4">
                                 <div>
@@ -111,7 +111,7 @@ export default function CreateTaskLogs() {
                                 </div>
                                 <button
                                     type="button"
-                                    className="self-end px-4 py-2 mt-2 text-sm text-white bg-red-500 rounded-full hover:bg-red-600"
+                                    className="self-end px-4 py-2 mt-2 text-sm text-white bg-red-500 rounded-full hover:bg-red-600 border-2"
                                     onClick={() => remove(index)}
                                 >
                                     Remove
@@ -121,7 +121,7 @@ export default function CreateTaskLogs() {
                         <div className="flex justify-end">
                             <button
                                 type="button"
-                                className="px-4 py-2 text-sm text-white bg-green-500 rounded-full hover:bg-green-600"
+                                className="px-4 py-2 text-sm text-white bg-green-500 rounded-full hover:bg-green-600 border-2"
                                 onClick={() => append({ key: '', value: '', type: 'string' })}
                             >
                                 Add Field
@@ -132,7 +132,7 @@ export default function CreateTaskLogs() {
                     <div className="flex justify-center mt-8">
                         <button
                             type="submit"
-                            className="px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-700"
+                            className="px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-700 border-2"
                         >
                             Submit
                         </button>

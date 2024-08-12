@@ -106,7 +106,7 @@ export default function PageTaskLogsKpis() {
 
     return (
         <div className="homepage flex items-center justify-center min-h-screen p-4 flex-col">
-            <Link href={`/companies/${params.idtenant}/${params.idEmployee}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href={`/companies/${params.idtenant}/${params.idEmployee}`} className="absolute top-4 left-4 bg-[--primary-color] bg-opacity-50 hover:bg-[--secondary-color] text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
 
@@ -114,14 +114,14 @@ export default function PageTaskLogsKpis() {
 
                 <div className='w-1/3'>
                     <div className='mt-10 flex flex-col items-center justify-center'>
-                        <h2 className='text-[28px] text-white'>List TaskLogs and KPI's</h2>
-                        <p className='text-[20px] text-rose-950'>Employee: {employeeId}</p>
-                        <p className='text-[20px] text-rose-950'>Task: {taskId}</p>
+                        <h2 className='text-center text-[28px] text-[--primary-color]'>List TaskLogs and KPI's</h2>
+                        <p className='text-[20px] text-[--secondary-color]'>Employee: {employeeId}</p>
+                        <p className='text-[20px] text-[--secondary-color]'>Task: {taskId}</p>
                     </div>
 
-                    <div className="bg-white rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70">
-                        <div className="mb-4">
-                            <label htmlFor="tenantName" className="block text-sm font-medium text-gray-700 mb-2">
+                    <div className="bg-[--primary-color] rounded-lg shadow-lg p-8 w-full max-w-md bg-opacity-70 custom-shadow">
+                        <div className="flex flex-col items-center space-y-2">
+                            <label htmlFor="tenantName" className="block text-xl font-medium text-white mb-2">
                                 Company Name:
                             </label>
                             <input
@@ -137,30 +137,31 @@ export default function PageTaskLogsKpis() {
                                     }
                                 }}
                             />
-                        </div>
                         <button
                             onClick={() => {getTasksLogsList(); getKPIsList()}}
-                            className="w-full py-2 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors"
+                            className="w-[85%] mt-2 py-2 bg-[--complementary-color] text-black rounded-lg font-semibold hover:bg-slate-300 transition-colors"
                         >
                             Listar TasksLogs and KPIs
                         </button>
+                        </div>
+                        
                     </div> <br />
 
                     <div className='flex justify-evenly'>
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createTaskLogs`}
-                            className="py-2 bg-green-500 text-white rounded-lg font-[12px] hover:bg-green-600 transition-colors w-[120px] text-center"
+                            className="py-2 bg-green-500 text-white rounded-full font-[12px] hover:bg-green-600 transition-colors w-[120px] text-center"
                         >
                             Registrar Log
                         </Link>
 
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`}
-                            className="py-2 bg-blue-500 text-white rounded-lg font-[12px] hover:bg-blue-600 transition-colors w-[130px] text-center"
+                            className="py-2 bg-blue-500 text-white rounded-full font-[12px] hover:bg-blue-600 transition-colors w-[130px] text-center"
                         >
                             KPI Percentage
                         </Link>
 
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPIForm`}
-                            className="py-2 bg-yellow-500 text-black rounded-lg font-[12px] hover:bg-yellow-600 transition-colors w-[120px] text-center"
+                            className="py-2 bg-yellow-500 text-black rounded-full font-[12px] hover:bg-yellow-600 transition-colors w-[120px] text-center"
                         >
                             KPI Form
                         </Link>
@@ -168,19 +169,19 @@ export default function PageTaskLogsKpis() {
 
                 </div>
 
-                <div className='mx-2 flex items-center justify-center w-2/3'>
+                <div className='ml-4 flex items-center justify-center w-2/3'>
                     <div className="flex justify-center">
                         <div className="overflow-x-auto">
-                            <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                            <table className="bg-slate-300 shadow-md rounded-lg overflow-hidden border-2">
                                 <thead className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
                                     <tr>
                                         {tableKPIsHeaders.map((header) => (
-                                            <th key={header} className="py-3 px-6 text-left uppercase tracking-wider">
+                                            <th key={header} className="py-1 px-2 text-left uppercase tracking-wider">
                                                 {header.replace(/_/g, ' ')}
                                             </th>
                                         ))}
                                         {hasKPIs && (
-                                            <th className="py-3 px-3 text-left uppercase tracking-wider">Actions</th>
+                                            <th className="py-1 px-1 text-left uppercase tracking-wider">Actions</th>
                                         )}
                                     </tr>
                                 </thead>
@@ -191,14 +192,14 @@ export default function PageTaskLogsKpis() {
                                             className={index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}
                                         >
                                             {tableKPIsHeaders.map((header) => (
-                                                <td key={header} className="py-3 px-6">
+                                                <td key={header} className="py-1 px-2">
                                                     {renderCellContent(header, kpi[header])}
                                                 </td>
                                             ))}
-                                            <td className="py-3 px-2">
+                                            <td className="py-1 px-2">
                                                 <button
                                                     onClick={() => handleButtonClickKPIEvaluetion(kpi._id)}
-                                                    className="py-1 px-3 bg-blue-500 text-white rounded-full hover:bg-blue-600 mb-2"
+                                                    className="py-1 px-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 mb-2"
                                                 >
                                                     Evaluation
                                                 </button>
@@ -216,7 +217,7 @@ export default function PageTaskLogsKpis() {
             {/*---------- tabla dinámica para tasks con campos variables ----------*/}
             <div className="flex justify-center">
                 <div className="overflow-x-auto">
-                    <table className="min-w-full bg-white shadow-md rounded-lg overflow-hidden">
+                    <table className="min-w-full bg-slate-300 shadow-md rounded-lg overflow-hidden border-2">
                         <thead className="bg-gradient-to-r from-indigo-600 to-purple-600 text-white">
                             <tr>
                                 {tableTaskLogsHeaders.map((header) => (

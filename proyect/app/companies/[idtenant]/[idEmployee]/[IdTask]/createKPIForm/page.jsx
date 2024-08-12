@@ -15,27 +15,27 @@ export default function CreateKpiForm() {
     return (
         <>
             <div className="homepage min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-500 to-pink-500 p-6">
-                <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+                <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}`} className="absolute top-4 left-4 bg-[--secondary-color] bg-opacity-50 hover:[--primary-color] text-white font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                     ⬅️ Back
                 </Link>
 
-                <div className="bg-white/80 backdrop-blur-md shadow-lg rounded-lg p-8 w-full max-w-lg">
-                    <h1 className="text-3xl font-semibold mb-6 text-center text-gray-800">Elige el tipo de pregunta</h1>
+                <div className="card-type">
+                    <h1 className="text-3xl font-semibold mb-6 text-center text-[--complementary-color]">Elige el tipo de pregunta</h1>
                     <div className='w-full flex space-x-3'>
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`}
-                            className="w-full py-3 px-4 bg-purple-600 text-white rounded hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 text-center"
+                            className="w-full py-3 px-4 border-2 bg-[--complentary-color] text-white rounded hover:bg-[--complementary-color] hover:text-black text-center"
                         >
                             Generación dropdown de criterios de evaluación
                         </Link>
 
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`}
-                            className="w-full py-3 px-4 bg-purple-600 text-white rounded hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 text-center"
+                            className="w-full py-3 px-4 border-2 bg-[--complentary-color] text-white rounded hover:bg-[--complementary-color] hover:text-black text-center"
                         >
                             Métricas y unidad de tiempo
                         </Link>
 
                         <Link href={`/companies/${params.idtenant}/${params.idEmployee}/${params.IdTask}/createKPI`}
-                            className="w-full py-3 px-4 bg-purple-600 text-white rounded hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 text-center"
+                            className="w-full py-3 px-4 border-2 bg-[--complentary-color] text-white rounded hover:bg-[--complementary-color] hover:text-black text-center"
                         >
                             Preguntas de Si/No
                         </Link>

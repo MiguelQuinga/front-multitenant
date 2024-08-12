@@ -99,20 +99,20 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
     return (<>
         <div className="homepage flex flex-col items-center justify-center min-h-screen p-8">
 
-            <Link href={`/companies/${params.idtenant}/${params.idEmployee}`} className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href={`/companies/${params.idtenant}/${params.idEmployee}`} className="absolute top-4 left-4 bg-[--secondary-color] hover:bg-[--primary-color] text-white font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
 
-            <div className="w-full max-w-2xl bg-white bg-opacity-80 p-8 rounded-lg shadow-lg backdrop-blur-md">
+            <div className="w-full max-w-2xl bg-[--primary-color] bg-opacity-80 p-8 rounded-lg shadow-lg backdrop-blur-md">
                 <div className='my-2 flex flex-col items-center'>
-                    <h2 className='text-center text-[32px] text-black'>Assign tasks</h2>
-                    <p className='text-[24px] text-rose-950'>EmployeeId: {params.idEmployee}</p>
+                    <h2 className='text-center text-[32px] text-[--complementary-color]'>Assign tasks</h2>
+                    <p className='text-[24px] text-[--complementary-color]'>EmployeeId: {params.idEmployee}</p>
                 </div>
 
                 <form onSubmit={handleSubmit(onFormSubmit)}>
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Title</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">Title</label>
                             <input
                                 type="text"
                                 placeholder="Title"
@@ -122,7 +122,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                             {errors.task?.title && <p className="mt-1 text-sm text-red-500">{errors.task.title.message}</p>}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Priority</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">Priority</label>
                             <input
                                 type="number"
                                 placeholder="Priority"
@@ -132,7 +132,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                             {errors.task?.priority && <p className="mt-1 text-sm text-red-500">{errors.task.priority.message}</p>}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Start Date</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">Start Date</label>
                             <input
                                 type="date"
                                 placeholder="Start Date"
@@ -143,7 +143,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">End Date</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">End Date</label>
                             <input
                                 type="date"
                                 placeholder="End Date"
@@ -153,9 +153,9 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                             {errors.task?.endDate && <p className="mt-1 text-sm text-red-500">{errors.task.endDate.message}</p>}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Concurrence</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">Concurrence</label>
                             <select
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                                className="text-black mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 {...register("task.concurrence", { required: "Concurrence is required" })}
                             >
                                 <option value="true">Yes</option>
@@ -166,9 +166,9 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
 
 
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">State</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">State</label>
                             <select
-                                className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                                className="text-black mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
                                 {...register("task.state", { required: "State is required" })}
                             >
                                 <option value="active">Active</option>
@@ -180,7 +180,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                     </div>
 
                     <div className='space-y-4'>
-                        <label className="block text-sm font-medium text-gray-700 ">Additional Fields</label>
+                        <label className="block text-xl font-medium text-[--complementary-color]">Additional Fields</label>
                         {fields.map((field, index) => (
                             <div key={field.id} className="flex flex-col space-y-2 mb-4 border-t border-gray-200 pt-4">
                                 <input
@@ -205,7 +205,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                                     <option value="date">Date</option>
                                 </select>
                                 <button type="button"
-                                    className="self-end px-4 py-2 mt-2 text-sm text-white bg-red-500 rounded-full hover:bg-red-600"
+                                    className="self-end px-4 py-2 mt-2 text-sm text-white bg-red-500 rounded-full hover:bg-red-600 border-2"
                                     onClick={() => remove(index)}>Remove</button>
                             </div>
                         ))}
@@ -213,7 +213,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                         <div className="flex justify-end">
                             <button
                                 type="button"
-                                className="px-4 py-2 text-sm text-white bg-green-500 rounded-full hover:bg-green-600"
+                                className="px-4 py-2 text-sm text-white bg-green-500 rounded-full hover:bg-green-600 border-2"
                                 onClick={() => append({ key: '', value: '', type: 'string' })}
                             >
                                 Add Field
@@ -225,7 +225,7 @@ export default function AssignTasks() { //registrar un empleado dado un tenant
                     <div className="flex justify-center mt-8">
                         <button
                             type="submit"
-                            className="px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-700"
+                            className="px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-700 border-2"
                         >
                             Submit
                         </button>

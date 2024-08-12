@@ -73,16 +73,16 @@ export default function CreateEmployees({ params }) {
 
     return (<>
         <div className="homepage flex items-center justify-center min-h-screen p-8">
-            <Link href="/companies/employee-list" className="absolute top-4 left-4 bg-white bg-opacity-50 hover:bg-opacity-70 text-black font-semibold py-2 px-4 rounded-full shadow-md transition-all">
+            <Link href="/companies/employee-list" className="absolute top-4 left-4 bg-[--secondary-color] hover:bg-[--primary-color] text-white font-semibold py-2 px-4 rounded-full shadow-md transition-all">
                 ⬅️ Back
             </Link>
-            <div className="w-full max-w-2xl bg-white bg-opacity-80 p-8 rounded-lg shadow-lg backdrop-blur-md">
+            <div className="w-full max-w-2xl bg-[--primary-color] bg-opacity-80 p-8 rounded-lg shadow-lg backdrop-blur-md">
                 <form onSubmit={handleSubmit(onFormSubmit)} className="space-y-6">
-                    <h2 className="text-center text-3xl font-semibold text-gray-800 mb-6">Register Employee</h2>
+                    <h2 className="text-center text-3xl font-semibold text-[--complementary-color] mb-6">Register Employee</h2>
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Name</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">Name</label>
                             <input
                                 type="text"
                                 placeholder="Name"
@@ -92,7 +92,7 @@ export default function CreateEmployees({ params }) {
                             {errors.employee?.name && <p className="mt-1 text-sm text-red-500">{errors.employee.name.message}</p>}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Department</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">Department</label>
                             <input
                                 type="text"
                                 placeholder="Department"
@@ -102,7 +102,7 @@ export default function CreateEmployees({ params }) {
                             {errors.employee?.department && <p className="mt-1 text-sm text-red-500">{errors.employee.department.message}</p>}
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700">Work Position</label>
+                            <label className="block text-sm font-medium text-[--complementary-color]">Work Position</label>
                             <input
                                 type="text"
                                 placeholder="Work Position"
@@ -114,7 +114,7 @@ export default function CreateEmployees({ params }) {
                     </div>
 
                     <div className="space-y-4">
-                        <label className="block text-sm font-medium text-gray-700 ">Additional Fields</label>
+                        <label className="block text-xl font-medium text-[--complementary-color]">Additional Fields</label>
                         {fields.map((field, index) => (
                             <div key={field.id} className="flex flex-col space-y-2 mb-4 border-t border-gray-200 pt-4">
                                 <div>
@@ -135,7 +135,7 @@ export default function CreateEmployees({ params }) {
                                 </div>
                                 <div>
                                     <select
-                                        className="block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500"
+                                         className="text-black block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:border-[var(--secondary-color)] focus:ring-1 focus:ring-[var(--secondary-color)]"
                                         {...register(`employee.additionalFields.${index}.type`)}
                                     >
                                         <option value="string">String</option>
@@ -146,7 +146,7 @@ export default function CreateEmployees({ params }) {
                                 </div>
                                 <button
                                     type="button"
-                                    className="self-end px-4 py-2 mt-2 text-sm text-white bg-red-500 rounded-full hover:bg-red-600"
+                                    className="self-end px-4 py-2 mt-2 text-sm text-white bg-red-500 rounded-full hover:bg-red-600 border-2"
                                     onClick={() => remove(index)}
                                 >
                                     Remove
@@ -156,7 +156,7 @@ export default function CreateEmployees({ params }) {
                         <div className="flex justify-end">
                             <button
                                 type="button"
-                                className="px-4 py-2 text-sm text-white bg-green-500 rounded-full hover:bg-green-600"
+                                className="px-4 py-2 text-sm text-white bg-green-500 rounded-full hover:bg-green-600 border-2"
                                 onClick={() => append({ key: '', value: '', type: 'string' })}
                             >
                                 Add Field
@@ -167,7 +167,7 @@ export default function CreateEmployees({ params }) {
                     <div className="flex justify-center mt-8">
                         <button
                             type="submit"
-                            className="px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-700"
+                            className="px-6 py-2 text-sm font-semibold text-white bg-indigo-600 rounded-full hover:bg-indigo-700 border-2"
                         >
                             Submit
                         </button>
